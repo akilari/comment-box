@@ -1,6 +1,14 @@
 .comment-container {
   margin-top: 30px;
+  // padding: 0 !important;
   form {
     margin-top: 30px;
+  }
+}
+
+.list-group-item {
+  button {
+    float: right;
+    position: relative;
   }
 }

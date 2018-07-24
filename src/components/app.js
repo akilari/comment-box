@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Section from '../containers/sections';
+import Comments from '../containers/comments';
 
 class App extends Component {
   render() {

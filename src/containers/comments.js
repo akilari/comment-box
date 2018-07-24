@@ -11,19 +11,25 @@ class Comments extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
+
+  componentDidMount() {
+    console.log('mounted');
+  }
   onInputChange(event) {
     this.setState({
       term: event.target.value
     });
   }
+
   renderUser({id, title}) {
     return (
-      <li className="list-group-item" key= { _.uniqueId() }>{title}</li>
+      <li className="list-group-item" key= { _.uniqueId() }>
+      {title}
+      </li>
     );
   }
   onFormSubmit(event) {
     event.preventDefault();
-    console.log(this.props.comments);
     let newComments = [this.props.comments.push({id:_.uniqueId(), title: this.state.term})];
     this.setState({
       term:'',
@@ -32,10 +38,10 @@ class Comments extends Component {
   }
   render() {
     return (
-      <div>
+      <div className='container comment-container'>
         <ul className='list-group'> {this.props.comments.map(this.renderUser)}</ul>
         <form onSubmit={this.onFormSubmit} className='input-group'>
-          <input type='text' value={this.state.term} onChange={this.onInputChange} placeholder='type here..' className='form-control'/>
+          <input type='text' value= {this.state.term} onChange={this.onInputChange} placeholder='type here..' className='form-control'/>
           <button type='submit' className='btn btn-secondary'>Post</button>
         </form>
       </div>
